@@ -1,0 +1,10 @@
+spring.app:
+  amqp:
+    input:
+      queue: com.app.input.queue
+      exchange: com.app.input.exchange
+      routingKey: com.app.input.routingKey
+    output:
+      queue: com.app.output.queue
+      exchange: com.app.output.exchange
+      routingKey: com.app.output.routingKey
