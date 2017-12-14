@@ -57,7 +57,7 @@ public class AmqpMessageController {
 	public String receiveMessage() throws Exception{
 		
 		Message receivedMessage = rabbitTemplate.receive(outputQueueName);
-		return new String(receivedMessage.getBody());
+		return  receivedMessage != null ? new String(receivedMessage.getBody()) : null;
 	}	
 
 }

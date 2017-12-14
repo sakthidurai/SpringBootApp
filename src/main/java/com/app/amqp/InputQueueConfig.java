@@ -33,7 +33,7 @@ public class InputQueueConfig {
 	
 	@Bean
 	private DirectExchange inputExchange() {
-		return new DirectExchange("default-exchange");
+		return new DirectExchange(inputExchangeName);
 	}
 	
 	@Bean
