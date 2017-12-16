@@ -58,6 +58,7 @@ public class AmqpMessageController {
 		
 		Message receivedMessage = rabbitTemplate.receive(outputQueueName);
 		return  receivedMessage != null ? new String(receivedMessage.getBody()) : null;
+		//return new String(receivedMessage.getBody()) ;
 	}	
 
 }
