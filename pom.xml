@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.example</groupId>
+	<groupId>com.app</groupId>
 	<artifactId>SpringBootApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -53,6 +53,35 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.13</version>
+                <configuration>
+                    <imageName>docker-spring-boot-app.jar</imageName>
+                    <baseImage>openjdk:8</baseImage>
+                    <entryPoint>["java", "-Dserver.port=8080", "-jar", "SpringBootApp-0.0.1-SNAPSHOT.jar"]</entryPoint>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>SpringBootApp-0.0.1-SNAPSHOT.jar</include>
+                        </resource>
+                    </resources>
+                    <exposes>
+                        <expose>8080</expose>
+                    </exposes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>build-image</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>			
 		</plugins>
 	</build>
 

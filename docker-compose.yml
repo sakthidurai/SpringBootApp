@@ -1,0 +1,11 @@
+rabbitmq:
+  image: rabbitmq:management
+  ports:
+    - "5672:5672"
+    - "15672:15672"
+docker-spring-boot-app.jar:
+  image: docker-spring-boot-app.jar:latest
+  ports:
+    - "8080:8080"
+  links:
+    - rabbitmq

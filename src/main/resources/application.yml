@@ -1,5 +1,10 @@
-spring.app:
-  amqp:
+spring:
+  rabbitmq:
+    host: <ipaddress where rabbit mq is running>
+    port: 5672
+    username: guest
+    password: guest
+  app.amqp:
     input:
       queue: com.app.input.queue
       exchange: com.app.input.exchange
